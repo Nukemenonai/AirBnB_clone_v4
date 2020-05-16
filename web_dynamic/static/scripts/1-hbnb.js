@@ -1,16 +1,13 @@
 $(document).ready(function () {
   $('.amenities UL LI INPUT').css('margin-right', '10px');
-  let idDict = {};
+  const aList = [];
   $('input[type="checkbox"]').click(function () {
     if ($(this).is(':checked')) {
-      idDict[$(this).attr('data-id')] = $(this).attr('data-name');
+      aList.push($(this).parent().text());
     } else if ($(this).is(':not(:checked)')) {
-      delete idDict[$(this).attr('data-id')];
+      aList.pop($(this).parent().text());
     }
-    let alist = [];
-    for (let k in idDict) {
-      alist.push(idDict[k]);
-    }
-    $('.amenities h4').text(alist.join(', '));
+    console.log(aList);
+    $('.amenities h4').text(aList.join(', '));
   });
 });

@@ -6,7 +6,6 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Holberton AirBnB</title>
 
     <!-- FAVICON -->
 
@@ -21,35 +20,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/3-footer.css') }}?{{ cache_id }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/6-filters.css') }}?{{ cache_id }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/8-places.css') }}?{{ cache_id }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/font-awesome.css') }}?{{ cache_id }}">
-
-    <script src="<!DOCTYPE html>
-<html lang="en">
-  <head>
-
-    <!-- HEAD -->
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="static/scripts/1-hbnb.js?{{ cache_id }}"></script>
     <title>Holberton AirBnB</title>
-
-    <!-- FAVICON -->
-
-    <link rel="shortcut icon" href="{{ url_for('static', filename='images/icon.png') }}">
-
-    <!-- **********************
-	 CSS styles
-	 ********************** -->
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/4-common.css') }}?{{ cache_id }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/3-header.css') }}?{{ cache_id }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/3-footer.css') }}?{{ cache_id }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/6-filters.css') }}?{{ cache_id }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/8-places.css') }}?{{ cache_id }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/font-awesome.css') }}?{{ cache_id }}">
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="static/scripts/1-hbnb.js" defer></script>
   </head>
 
   <!-- **********************
@@ -81,10 +54,10 @@
 	    <h3>States</h3>
 	    <h4>&nbsp;</h4>
 	    <ul class="popover">
-	      {% for state in states|dictsort %}
-	      <H2>{{ state[0] }}</H2>
+	      {% for state in states %}
+	      <H2>{{ state[0].name }}</H2>
 	      <UL>
-		{% for city in state[1].cities|sort(attribute='name') %}
+		{% for city in state[1] %}
 		<LI>{{ city.name }}</LI>
 		{% endfor %}
 	      </UL>
@@ -100,8 +73,8 @@
 	    <h3>Amenities</h3>
 	    <h4>&nbsp;</h4>
 	    <ul class="popover">
-	      {% for amenity in amens|sort(attribute='name') %}
-	      <LI><INPUT type="checkbox" data-id={{  }}</LI>
+	      {% for amenity in amenities %}
+	      <LI><INPUT type="checkbox" data-id=":amenity_id" data-name=":amenity_name" />{{amenity.name}}</LI>
 	      {% endfor %}
 	    </ul>
 	  </div>
@@ -120,7 +93,7 @@
 	     BEGIN 1 PLACE
 	     ********************** -->
 
-	  {% for place in places|sort(attribute='name') %}
+	  {% for place in places %}
 
 	  <article>
 
