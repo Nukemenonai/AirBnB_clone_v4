@@ -1,9 +1,9 @@
 const items = {};
 let aList = [];
 
+$('.amenities UL LI INPUT').css('margin-right', '10px');
 function listAppend () {
-  $('.amenities UL LI INPUT').css('margin-right', '10px');
-  $('input[type="checkbox"]').click(function () {
+  $('.amenities .popover input').change(function () {
     if ($(this).is(':checked')) {
       aList.push($(this).parent().text());
       items[$(this).attr('data-name')] = $(this).attr('data-id');
@@ -11,18 +11,16 @@ function listAppend () {
       aList.pop($(this).parent().text());
       delete items[$(this).attr('data-name')];
     }
-    console.log(aList);
+    console.log(items);
     $('.amenities h4').text(aList.join(', '));
   });
   checkStatus();
-  listing();
 }
 
 function checkStatus () {
   $.ajax({
     url: 'http://0.0.0.0:5001/api/v1/status/',
     success: function (data) {
-      console.log(data);
       if (data['status'] === 'OK') {
         $('DIV#api_status').addClass('available');
       }
