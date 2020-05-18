@@ -6,7 +6,7 @@ function listAppend () {
   $('input[type="checkbox"]').click(function () {
     if ($(this).is(':checked')) {
       aList.push($(this).parent().text());
-      item[$(this).attr('data-name')] = $(this).attr('data-id');
+      items[$(this).attr('data-name')] = $(this).attr('data-id');
     } else if ($(this).is(':not(:checked)')) {
       aList.pop($(this).parent().text());
       delete items[$(this).attr('data-name')];
