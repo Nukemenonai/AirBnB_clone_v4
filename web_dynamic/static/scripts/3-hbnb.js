@@ -36,10 +36,10 @@ $(function () {
 	$('SECTION.places').append(
 	  '<article>' +
            '<div class="tittle">' +
-              '<h2>' + place.name + 
-              '<div class="price_by_night">' +
+		'<div class="price_by_night">' +
                   place.price_by_night +
               '</div>' +
+		'<h2>' + place.name +
 	     '</h2>' +
             '</div>' +
             '<div class="information">' +
